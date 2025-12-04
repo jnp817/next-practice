@@ -1,7 +1,7 @@
 
-export type TaskCard = {
+export interface TaskCard {
     id: string,
     title: string;
     desc: string;
-    isClose?: boolean;
+    completed?: boolean;
 }

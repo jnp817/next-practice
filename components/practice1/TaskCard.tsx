@@ -3,18 +3,27 @@ import React from 'react'
 
 type TaskCardProps = {
     task: TaskCard;
-    handleUpdate: (id: string, newValue: boolean) => void;
+    handleCompleted: (id: string, newValue: boolean) => void;
+    handleDelete: (id: string) => void;
 }
 
-export default function TaskCard({ task, handleUpdate }: TaskCardProps) {
+export default function TaskCard({ task, handleCompleted, handleDelete }: TaskCardProps) {
     return (
-        <div className={`border rounded-2xl p-4 space-y-2 ${task.isClose ? 'bg-gray-300' : 'bg-white'}`}>
-            <p>{task.id}</p>
-            <p>{task.title}</p>
-            <p>{task.desc}</p>
-            <button className="hover:bg-blue-500 cursor-pointer p-2 border rounded-xl" onClick={() => handleUpdate(task.id,!task.isClose)}>
+        <div className={`flex flex-col  justify-between border rounded-2xl p-4 space-y-2 ${task.completed ? 'bg-gray-300' : 'bg-white'}`}>
+            <div className="flex justify-between items-center">
+                <p className='truncate'>{task.id}</p>
+                <span
+                    onClick={() => handleDelete(task.id)}
+                    className='border rounded-full aspect-square w-[30px] h-[30px] flex justify-center items-center hover:bg-blue-500'
+                >
+                    ×
+                </span>
+            </div>
+            <p className='truncate'>{task.title}</p>
+            <p className='line-clamp-3'>{task.desc}</p>
+            <button className="hover:bg-blue-500 cursor-pointer p-2 border rounded-xl" onClick={() => handleCompleted(task.id, !task.completed)}>
                 {
-                    task.isClose ? '完了に戻す' : '完了にする'
+                    task.completed ? '完了に戻す' : '完了にする'
                 }
             </button>
         </div>

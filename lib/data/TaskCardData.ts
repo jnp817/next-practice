@@ -15,7 +15,7 @@ export const TaskCardData: TaskCard[] = [
         id:"3",
         title:"タスク3",
         desc: "説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明",
-        isClose:true
+        completed:true
     },
     {
         id:"4",
